@@ -1,0 +1,51 @@
+<%- include(HEADER) %>
+
+
+<div class="goods">
+    <div class="card goods__item">
+        <div class="cart-img-top__wrap">
+            <img class="card-img-top" src="/assets/cat_1.jpg" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <!-- <div class="btn btn-dark btn--addCart">장바구니 담기</div> -->
+
+  
+            <div class="btn btn-dark btn--addCart">장바구니 담기</div>
+
+        </div>
+    </div>
+    <div class="card goods__item">
+        <div class="cart-img-top__wrap">
+            <img class="card-img-top" src="/assets/cat_2.jpg" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+             
+                <div class="btn btn-dark btn--addCart">장바구니 담기</div>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    var emptyCells, i;
+
+    $('.goods').each(function () {
+        emptyCells = [];
+        for (i = 0; i < $(this).find('.goods__item').length; i++) {
+            emptyCells.push($('<div>', {
+                class: 'goods__item is-empty'
+            }));
+        }
+        $(this).append(emptyCells);
+    });
+</script>
+
+
+<%- include(FOOTER) %>
