@@ -22,13 +22,13 @@ var passwordHash = require('../libs/passwordHash');
 
 // 세션에 저장할 값은 아이디 하나면 충분하다.
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user.username);
 });
 
 // 후속요청할 경우
 // (어떤 req든지(expre js) 들어 올때, req객체에 user객체를 넣어준다.) 
-passport.deserializeUser(function(id, done) {
-    user.findById(id, function(err, user) {
+passport.deserializeUser(function(username, done) {
+    UserModel.findOne({username}, function(err, user) {
         done(err, user);
     });
 });
@@ -47,11 +47,8 @@ passport.use(new LocalStrategy(
     function (username, password, done) {
         UserModel.findOne({ username : username , password : passwordHash(password) }, function (err,user) {
             if (!user){
-                console.log('로그인 실패!')
-               return done(null, false, { message: '아이디 또는 비밀번호 오류 입니다.' });
+                return done(null, false, { message: '아이디 또는 비밀번호 오류 입니다.' });
             }else{
-                console.log('로그인 성공!')
-
                 return done(null, user );
             }
         });
@@ -59,9 +56,59 @@ passport.use(new LocalStrategy(
 ));
 
 
-router.get('/', function(req, res){
-    res.locals.navibarActive = 'login'
-    res.render('login')
+// 회원가입
+router.get('/join', function(req, res){
+    res.locals.navibarActive = 'join'
+    res.render('join')
 })
+
+router.post('/join', async function(req, res){
+    var User = new UserModel({
+        username : req.body.username,
+        password : passwordHash(req.body.password),
+        displayname : req.body.displayname
+    });
+    
+    var alreadyExistUsername = await UserModel.findOne({username : req.body.username , password : passwordHash(req.body.password)}).lean();
+
+    if(alreadyExistUsername ){
+        res.send('<script>alert("같은 아이디의 회원이 이미 존재 합니다. 다른 아이디를 사용하여 주세요");location.href="/account/join";</script>');
+    }else if(req.body.password != req.body.passwordVali){
+        res.send('<script>alert("비밀번호가 다릅니다.");location.href="/account/join";</script>');
+    }else{
+        User.save(function(err){
+            if (err) {
+                res.send(`<script>alert("${err.message}");location.href="/account/join";</script>`);
+            } else {
+                res.send('<script>alert("회원가입에 성공하였습니다. 로그인 해주세요");location.href="/account/login";</script>');
+            }
+        });
+    }
+
+});
+
+// 로그인
+router.get('/login', function(req, res){
+    res.locals.navibarActive = 'login'
+    res.render('login', { flashMessage : req.flash().error});
+})
+
+router.post('/login' , 
+    passport.authenticate('local', { 
+        failureRedirect: '/account/login', 
+        failureFlash: true,
+        successFlash: 'Welcome!'
+    }), 
+    function(req, res){        
+        res.send(`<script>alert('${req.user.username || '회원'}님 환영합니다.');location.href="/";</script>`);
+    }
+);
+
+
+// 로그아웃
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/account/login');
+});
 
 module.exports = router;

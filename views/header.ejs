@@ -15,8 +15,11 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/goods_list/">스타일 쉐어</a>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="/goods_list/" title="상품리스트">
+            <div class="logo"></div>
+        </a>
+        <a class="navbar-brand" href="/goods_list/" title="상품리스트">스타일 쉐어</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,12 +32,21 @@
                 <li class="nav-item <% if(locals.navibarActive == 'goods_cart'){%> active <%}%>">
                     <a class="nav-link" href="/goods_cart/">장바구니</a>
                 </li>
-                <li class="nav-item <% if(locals.navibarActive == 'login'){%> active <%}%>">
-                    <a class="nav-link" href="/login/">로그인</a>
+                <% if(!isLogin){ %>
+                    <li class="nav-item <% if(locals.navibarActive == 'login'){%> active <%}%>">
+                        <a class="nav-link" href="/account/login/">로그인</a>
+                    </li>
+                    <li class="nav-item <% if(locals.navibarActive == 'join'){%> active <%}%>">
+                    </li>
+                <% }else{ %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/account/logout/">로그아웃</a>
                 </li>
+                <% } %>
             </ul>
         </div>
     </nav>
+    <div class="container">
 
       
 

@@ -1,0 +1,33 @@
+    <div class="card goods__item">
+        <div class="cart-img-top__wrap">
+            <img class="card-img-top" src="/assets/cat_1.jpg" alt="<%= good.name %>">
+        </div>
+        <div class="card-body">
+            <div class="item__contentSection">
+                <h5 class="card-title item__name"><%= good.name %></h5>
+                <p class="card-text"><strong>생산자: </strong><%= good.provider %></p>
+                <p class="card-text "><strong>가격: </strong><%= good.price %> 원</p>
+            </div>      
+
+            <div class="item__contentSection">
+                <div class="form-group item__options__wrap">
+                    <select class="form-control" id="options">
+                        <option value="" disabled selected>옵션을 선택해 주세요</option>
+                        <% if(good.options){ %>
+                            <% good.options.forEach(function(e,i){ %>
+                            <option <%= e.stock == 0 && 'disabled' || '' %> value= <%= e.id %> >
+                                색상: <%= e.color || ''%>, 
+                                사이즈: <%= e.size || ''%> <%= e.stock == 0 && "[품절]" || '' %>
+                            </option>
+                             <% }) %>
+                        <% } %>
+
+                    </select>
+                </div>
+                <div class="btn btn-dark btn--addCart col-sm-12">장바구니 담기</div>
+            </div>
+
+
+        </div>
+    </div>
+    
