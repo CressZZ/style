@@ -10,16 +10,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
-    <script type="text/javascript" src="/static/common.js"></script>
     <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="/static/script.js"></script>
     
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="/goods_list/" title="상품리스트">
+        <a href="/" title="홈페이지">
             <div class="logo"></div>
         </a>
-        <a class="navbar-brand" href="/goods_list/" title="상품리스트">스타일 쉐어</a>
+        <a class="navbar-brand" href="/" title="홈페이지">스타일 쉐어</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,6 +37,7 @@
                         <a class="nav-link" href="/account/login/">로그인</a>
                     </li>
                     <li class="nav-item <% if(locals.navibarActive == 'join'){%> active <%}%>">
+                         <a class="nav-link" href="/account/join/">회원가입</a>
                     </li>
                 <% }else{ %>
                 <li class="nav-item">

@@ -90,6 +90,10 @@ router.post('/join', async function(req, res){
 // 로그인
 router.get('/login', function(req, res){
     res.locals.navibarActive = 'login'
+    if(req.query.message){
+        res.render('login', { flashMessage : req.query.message});
+        return false
+    }
     res.render('login', { flashMessage : req.flash().error});
 })
 

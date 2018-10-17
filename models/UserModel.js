@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'); 
+var Good = require('./GoodsModel'); 
 
 // 스키마
 var UsersSchema = new mongoose.Schema({
@@ -20,6 +21,12 @@ var UsersSchema = new mongoose.Schema({
         type : String,
         required: [true, '유저이름은 필수 입니다.']
     },
+    cartlist: [{id: String, count: Number, item:{ type: mongoose.Schema.Types.ObjectId, ref: 'Good' } }],
+    shipping: {
+        method: String,
+        price: Number,
+        canBundle: Boolean
+    }
 },
 { 
     collection: 'users',

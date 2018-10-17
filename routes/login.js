@@ -61,7 +61,7 @@ passport.use(new LocalStrategy(
 
 router.get('/', function(req, res){
     res.locals.navibarActive = 'login'
-    res.render('login')
+    res.render('login', {message: req.body.message})
 })
 
 module.exports = router;

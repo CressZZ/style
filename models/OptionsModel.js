@@ -1,24 +1,17 @@
 var mongoose = require('mongoose'); 
 var common = require('../libs/common')
 // 스키마
-var goodsSchema = new mongoose.Schema({
+var optionsSchema = new mongoose.Schema({
+    goods: { type: mongoose.Schema.Types.ObjectId, ref: 'Good' },
     id: Number,
-    name: String,
-    provider: String,
-    price: Number,
-    options: [{id: Number, color: String, size: String, stock: Number }],
-    shipping: {
-        method: String,
-        price: Number,
-        canBundle: Boolean
-    }
+    color: String, 
+    size: String, 
+    stock: Number
 },
 { 
-    collection: 'goods',
+    collection: 'options',
     timestamps: true
-});
-
-
+})
 // goodsSchema.virtual('shipping_price_string').get(function(){
 //     return common.comma(shipping.price)
 // })
@@ -30,4 +23,4 @@ var goodsSchema = new mongoose.Schema({
 // })
 
 // 모델 리턴
-module.exports = mongoose.model('Good', goodsSchema) 
+module.exports = mongoose.model('Options', optionsSchema) 

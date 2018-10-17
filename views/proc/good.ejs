@@ -5,13 +5,13 @@
         <div class="card-body">
             <div class="item__contentSection">
                 <h5 class="card-title item__name"><%= good.name %></h5>
-                <p class="card-text"><strong>생산자: </strong><%= good.provider %></p>
-                <p class="card-text "><strong>가격: </strong><%= good.price %> 원</p>
+                <p class="card-text item__desc"><strong>생산자: </strong><%= good.provider %></p>
+                <p class="card-text item__desc"><strong>가격: </strong><%= good.price_string %> 원</p>
             </div>      
 
             <div class="item__contentSection">
                 <div class="form-group item__options__wrap">
-                    <select class="form-control" id="options">
+                    <select class="form-control option_id">
                         <option value="" disabled selected>옵션을 선택해 주세요</option>
                         <% if(good.options){ %>
                             <% good.options.forEach(function(e,i){ %>
@@ -24,10 +24,8 @@
 
                     </select>
                 </div>
-                <div class="btn btn-dark btn--addCart col-sm-12">장바구니 담기</div>
+                <div class="btn btn-dark btn--addCart col-sm-12" data-itemid>장바구니 담기</div>
             </div>
-
-
         </div>
     </div>
     

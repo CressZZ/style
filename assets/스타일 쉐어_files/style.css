@@ -24,6 +24,31 @@ label{cursor:pointer;vertical-align:middle;}
 fieldset{border:0;}
 p{margin:0}
 
+
+/* body{background:url('/assets/back_1.jpg')} */
+
+
+/* header */
+.navbar{position: fixed; top:0; z-index: 3;width: 100vw;border-bottom: 1px solid; box-shadow: 3px 5px 7px #d9d9d9}
+.navbar .logo{     background: url(/assets/logo.svg) no-repeat; width: 30px; height: 30px; margin-right: 10px;} .nav-item.active .nav-link{border-bottom: 1px solid black}
+.container{margin-top: 70px}
+
+
+/* goods_list */
+.goods__list{display:flex; flex-wrap: wrap; }
+.goods__item{margin: 15px 0; background:#d9d9d9}
+.goods__item.is-empty{margin:0;}
+
+.goods__item .btn--addCart{float:right; }
+.goods__item .item__name {font-size: 1.2rem; font-weight: bold; text-align: center; height: 1.2rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.goods__item .card-text{margin-bottom: 5px}
+.goods__item .item__contentSection{margin-bottom:10px}
+.goods__item .item__options__wrap{margin-bottom: 5px}
+
+/* login */
+.login__wrap form {display: flex; flex-flow: column; align-items: center}
+
+
 @media all and (min-width: 960px) {
     html{ font-size: 14px; }
 }
@@ -32,65 +57,8 @@ p{margin:0}
     html{ font-size: 13px; }
 }
 @media all and (max-width: 599px)  {
-    html{ font-size: 8px; }
+    html{ font-size: 9px; }
 }
-
-
-/* header */
-.navbar{position: fixed; top:0; z-index: 11;width: 100vw;border-bottom: 1px solid; box-shadow: 3px 5px 7px #d9d9d9}
-.navbar .logo{     background: url(/assets/logo.svg) no-repeat; width: 30px; height: 30px; margin-right: 10px;} .nav-item.active .nav-link{border-bottom: 1px solid black}
-.container{margin-top: 70px}
-
-
-/* goods_list */
-.goods__list{display:flex; flex-wrap: wrap;font-size: 1rem }
-.goods__item{margin: 15px 0; background:#d9d9d9;}
-.goods__item.is-empty{margin:0;}
-
-.goods__item .btn--addCart{float:right; }
-.goods__item .item__name {font-size: 1.5rem; font-weight: bold; text-align: center; height: 1.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
-
-.goods__item .item__desc {margin-bottom: 5px;  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.goods__item .item__contentSection{margin-bottom:10px}
-.goods__item .item__options__wrap{margin-bottom: 5px}
-
-/* login */
-.login__wrap form {display: flex; flex-flow: column; align-items: center}
-
-/* 장바구니 아이탬*/
-.cart__item{position: relative;}
-.cart__item__wrap.sold_out::before{ content: ''; position: absolute; height: 100%; background: #d9d9d9; display: block; width: 100%;  z-index: 2;
-opacity: 0.5;}
-.cart__item__wrap.sold_out::after{ content: 'sold out'; position: absolute; height: 100%; display: flex; width: 100%;  z-index: 3; font-size:5rem; font-weight: bold; justify-content: center; align-items: center }
-.cart__item__deleteBtn{position: absolute;z-index: 4;}
-
-.cart__item__content{display: flex;}
-.cart__section{overflow: hidden;}
-.cart__section:nth-child(1){flex:1; border:1px solid #d9d9d9;}
-.cart__section:nth-child(2){flex:2; display: flex; flex-flow: column; align-items: flex-end;  position: relative;font-size:1.4rem; margin-left: 5px}
-.cart__item__name{    font-size: 2rem; overflow: hidden; white-space: nowrap; text-align: left; text-overflow: ellipsis; max-width: 100%; }
-.cart__item__prices{margin-top:5px; text-align: right}
-.cart__item__price--each{margin-bottom: 5px; font-size:1rem}
-.cart__item__price--total{font-weight: bold; font-size:1.4rem}
-.count__wrap {display: flex; position: absolute; bottom:0}
-.count{width: 50px; text-align: center; border-radius: 0; border:1px solid black;padding: 0}
-.count__btn{margin-bottom: 0; display: flex; line-height: 1; align-items: center;}
-.count__btn--minus {border-radius: .25rem 0 0 .25rem; }
-.count__btn--plus {border-radius:  0 .25rem .25rem 0}
-
-@media (max-width: 400px)  {
-    .cart__item__content{flex-flow: column }
-    .count__wrap{position: static;}
-    .cart__section:nth-child(1){flex:2}
-    .cart__section:nth-child(2){flex:1; margin-top:10px}
-}
-@media (min-width: 400px) and (max-width: 768px)  {
-    .cart__section:nth-child(2){flex:2}
-}
-@media (min-width: 768px)   {
-    .cart__section:nth-child(2){flex:2}
-}
-
 
 /* 장바구니 */
 .cart__wrap{max-width: 700px; margin: auto; padding-bottom: 100px}

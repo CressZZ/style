@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:3000/goods_cart/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>스타일 쉐어</title>
+    <script src="./스타일 쉐어_files/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="./스타일 쉐어_files/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./스타일 쉐어_files/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="./스타일 쉐어_files/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>   
+    <script type="text/javascript" src="./스타일 쉐어_files/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="./스타일 쉐어_files/style.css">
+    
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <a href="http://localhost:3000/goods_list/" title="상품리스트">
+            <div class="logo"></div>
+        </a>
+        <a class="navbar-brand" href="http://localhost:3000/goods_list/" title="상품리스트">스타일 쉐어</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link " href="http://localhost:3000/goods_list/">상품리스트</a>
+                </li>
+                <li class="nav-item  active ">
+                    <a class="nav-link" href="http://localhost:3000/goods_cart/">장바구니</a>
+                </li>
+                
+                    <li class="nav-item ">
+                        <a class="nav-link" href="http://localhost:3000/account/login/">로그인</a>
+                    </li>
+                    <li class="nav-item ">
+                         <a class="nav-link" href="http://localhost:3000/account/join/">회원가입</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+
+      
+
+
+<style>
+    .cart__wrap{max-width: 700px; margin: auto;}
+</style>
+
+<div class="cart__wrap">
+    <ul class="cart__list">
+        
+            <li class="cart__item">
+            <style>
+
+    .cart__item__content{display: flex;}
+    .cart__section:nth-child(1){flex:1; border:1px solid #d9d9d9;}
+    .cart__section:nth-child(2){flex:2; display: flex; flex-flow: column; align-items: flex-end;  position: relative;font-size:1.4rem}
+    .cart__item__name{font-size: 2rem;}
+
+    .cart__item__options{margin-right:50px}
+    .cart__item__option:nth-child(1){margin-bottom:5px}
+
+    .count__wrap {display: flex; position: absolute; bottom:0}
+    .count{width: 30px; text-align: center; border-radius: 0; border:1px solid black}
+    .count__btn{margin-bottom: 0; display: flex; line-height: 1; align-items: center;}
+    .count__btn--plus {border-radius: .25rem 0 0 .25rem; }
+    .count__btn--minus {border-radius:  0 .25rem .25rem 0}
+
+    @media all and (max-width: 959px) and (min-width: 768px) {
+        .cart__section:nth-child(2){flex:3}
+    }
+
+    @media all and (min-width: 960px) {
+        .cart__section:nth-child(2){flex:4}
+    }
+</style>
+
+<div class="cart__item__wrap card"> 
+    <div class="card-body cart__item__content">
+        <div class="cart__section">
+            <div class="cart__img__wrap">
+                <img class="card-img-top" src="./스타일 쉐어_files/cat_1.jpg" alt="Python Hood T-Shirts">
+            </div>
+        </div>
+        <div class="cart__section">
+            <h5 class="cart__item__name">Python Hood T-Shirts</h5>
+            <div class="cart__item__options">
+                <p class="cart__item__option">색상: yellow</p>
+                <p class="cart__item__option">사이즈: S</p>
+            </div>
+            <div class="count__wrap">
+                <div class="btn btn-primary count__btn count__btn--plus" data-addcount="1"><span>+</span></div>
+                <input class="count form-control" type="nember" maxlength="2" id="" placeholder="1" value="1" required="">
+                <div class="btn btn-primary count__btn count__btn--minus" data-addcount="-1">-</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.count__btn').on('click', (e)=>{
+        console.log($(e.target).data().addCount)
+        var targetCount = Number($(e.target).data().addCount);
+        $('input .count').val($('input .count').val()+targetCount);
+    })
+
+</script>
+            </li>
+        
+    </ul>
+
+</div>
+
+</div>
+
+
+<div id="SL_balloon_obj" alt="0" style="display: block;"><div id="SL_button" class="SL_ImTranslatorLogo" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/imtranslator-s.png&quot;); display: none;"></div><div id="SL_shadow_translation_result2" style="display: none;"></div><div id="SL_shadow_translator" style="display: none;"><div id="SL_planshet"><div id="SL_arrow_up" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/up.png&quot;);"></div><div id="SL_Bproviders"><div class="SL_BL_LABLE_ON" title="Google" id="SL_P0">G</div><div class="SL_BL_LABLE_ON" title="Microsoft" id="SL_P1">M</div><div class="SL_BL_LABLE_ON" title="Translator" id="SL_P2">T</div></div><div id="SL_alert_bbl" style="display: none;"><div id="SLHKclose" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/delete.png&quot;);"></div><div id="SL_alert_cont"></div></div><div id="SL_TB"><table id="SL_tables" cellspacing="1"><tr><td class="SL_td" width="10%" align="right"><input id="SL_locer" type="checkbox" title="언어 잠금"></td><td class="SL_td" width="20%" align="left"><select id="SL_lng_from" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/select.png&quot;) 100% 0px no-repeat rgb(255, 255, 255);"><option value="auto">언어를 감지</option><option value="gl">갈리시아어</option><option value="gu">구자라트어</option><option value="ka">그루지야어</option><option value="el">그리스어</option><option value="nl">네덜란드어</option><option value="ne">네팔어</option><option value="no">노르웨이어</option><option value="da">덴마크어</option><option value="de">독일어</option><option value="lo">라오어</option><option value="lv">라트비아어</option><option value="la">라틴어</option><option value="ru">러시아어</option><option value="ro">루마니아어</option><option value="lb">룩셈부르크어</option><option value="lt">리투아니아어</option><option value="mr">마라티어</option><option value="mi">마오리어</option><option value="mk">마케도니아어</option><option value="mg">말라가시어</option><option value="ml">말라얄람어</option><option value="ms">말레이어</option><option value="mt">몰타어</option><option value="mn">몽골어</option><option value="hmn">몽족</option><option value="my">미얀마어 (버마어)</option><option value="eu">바스크어</option><option value="vi">베트남어</option><option value="be">벨로루시어</option><option value="bn">벵골의</option><option value="bs">보스니아어</option><option value="bg">불가리아어</option><option value="sm">사모아어</option><option value="sr">세르비아어</option><option value="ceb">세부아노</option><option value="st">세소토어</option><option value="so">소말리아어</option><option value="sn">쇼나어</option><option value="su">순다어</option><option value="sw">스와힐리어</option><option value="sv">스웨덴어</option><option value="gd">스코틀랜드 게일어</option><option value="es">스페인어</option><option value="sk">슬로바키아어</option><option value="sl">슬로베니아어</option><option value="sd">신디어</option><option value="si">신할라어</option><option value="ar">아랍어</option><option value="hy">아르메니아어</option><option value="is">아이슬란드어</option><option value="ht">아이티 프랑스 말</option><option value="ga">아일랜드어</option><option value="az">아제르바이잔어</option><option value="af">아프리칸스어</option><option value="sq">알바니아어</option><option value="am">암하라어</option><option value="et">에스토니아어</option><option value="eo">에스페란토 말</option><option value="en">영어</option><option value="yo">요루바어</option><option value="ur">우르두어</option><option value="uz">우즈베크어</option><option value="uk">우크라이나어</option><option value="cy">웨일즈어</option><option value="ig">이그보어</option><option value="yi">이디시어</option><option value="it">이탈리아어</option><option value="id">인도네시아어</option><option value="ja">일본어</option><option value="jw">자바어</option><option value="zu">줄루어</option><option value="zh-CN">중국어(간체)</option><option value="zh-TW">중국어(번체)</option><option value="ny">체와어</option><option value="cs">체코어</option><option value="kk">카자흐어</option><option value="ca">카탈로니아어</option><option value="kn">칸나다어</option><option value="co">코르시카어</option><option value="xh">코사어</option><option value="ku">쿠르드어</option><option value="hr">크로아티아어</option><option value="km">크메르어</option><option value="ky">키르기스어</option><option value="tl">타갈로그어</option><option value="ta">타밀어</option><option value="tg">타직어</option><option value="th">태국어</option><option value="tr">터키어</option><option value="te">텔루구어</option><option value="ps">파슈토어</option><option value="pa">펀자브어</option><option value="fa">페르시아어</option><option value="pt">포르투갈어</option><option value="pl">폴란드어</option><option value="fr">프랑스어</option><option value="fy">프리지아어</option><option value="fi">핀란드어</option><option value="haw">하와이 사람</option><option value="ha">하우사어</option><option value="ko">한국어</option><option value="hu">헝가리어</option><option value="iw">히브리어</option><option value="hi">힌디어</option></select></td><td class="SL_td" width="3" align="center"><div id="SL_switch_b" title="언어 전환" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/switchb.png&quot;);"></div></td><td class="SL_td" width="20%" align="left"><select id="SL_lng_to" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/select.png&quot;) 100% 0px no-repeat rgb(255, 255, 255);"><option value="gl">갈리시아어</option><option value="gu">구자라트어</option><option value="ka">그루지야어</option><option value="el">그리스어</option><option value="nl">네덜란드어</option><option value="ne">네팔어</option><option value="no">노르웨이어</option><option value="da">덴마크어</option><option value="de">독일어</option><option value="lo">라오어</option><option value="lv">라트비아어</option><option value="la">라틴어</option><option value="ru">러시아어</option><option value="ro">루마니아어</option><option value="lb">룩셈부르크어</option><option value="lt">리투아니아어</option><option value="mr">마라티어</option><option value="mi">마오리어</option><option value="mk">마케도니아어</option><option value="mg">말라가시어</option><option value="ml">말라얄람어</option><option value="ms">말레이어</option><option value="mt">몰타어</option><option value="mn">몽골어</option><option value="hmn">몽족</option><option value="my">미얀마어 (버마어)</option><option value="eu">바스크어</option><option value="vi">베트남어</option><option value="be">벨로루시어</option><option value="bn">벵골의</option><option value="bs">보스니아어</option><option value="bg">불가리아어</option><option value="sm">사모아어</option><option value="sr">세르비아어</option><option value="ceb">세부아노</option><option value="st">세소토어</option><option value="so">소말리아어</option><option value="sn">쇼나어</option><option value="su">순다어</option><option value="sw">스와힐리어</option><option value="sv">스웨덴어</option><option value="gd">스코틀랜드 게일어</option><option value="es">스페인어</option><option value="sk">슬로바키아어</option><option value="sl">슬로베니아어</option><option value="sd">신디어</option><option value="si">신할라어</option><option value="ar">아랍어</option><option value="hy">아르메니아어</option><option value="is">아이슬란드어</option><option value="ht">아이티 프랑스 말</option><option value="ga">아일랜드어</option><option value="az">아제르바이잔어</option><option value="af">아프리칸스어</option><option value="sq">알바니아어</option><option value="am">암하라어</option><option value="et">에스토니아어</option><option value="eo">에스페란토 말</option><option value="en">영어</option><option value="yo">요루바어</option><option value="ur">우르두어</option><option value="uz">우즈베크어</option><option value="uk">우크라이나어</option><option value="cy">웨일즈어</option><option value="ig">이그보어</option><option value="yi">이디시어</option><option value="it">이탈리아어</option><option value="id">인도네시아어</option><option value="ja">일본어</option><option value="jw">자바어</option><option value="zu">줄루어</option><option value="zh-CN">중국어(간체)</option><option value="zh-TW">중국어(번체)</option><option value="ny">체와어</option><option value="cs">체코어</option><option value="kk">카자흐어</option><option value="ca">카탈로니아어</option><option value="kn">칸나다어</option><option value="co">코르시카어</option><option value="xh">코사어</option><option value="ku">쿠르드어</option><option value="hr">크로아티아어</option><option value="km">크메르어</option><option value="ky">키르기스어</option><option value="tl">타갈로그어</option><option value="ta">타밀어</option><option value="tg">타직어</option><option value="th">태국어</option><option value="tr">터키어</option><option value="te">텔루구어</option><option value="ps">파슈토어</option><option value="pa">펀자브어</option><option value="fa">페르시아어</option><option value="pt">포르투갈어</option><option value="pl">폴란드어</option><option value="fr">프랑스어</option><option value="fy">프리지아어</option><option value="fi">핀란드어</option><option value="haw">하와이 사람</option><option value="ha">하우사어</option><option selected="selected" value="ko">한국어</option><option value="hu">헝가리어</option><option value="iw">히브리어</option><option value="hi">힌디어</option></select></td><td class="SL_td" width="5%" align="center"> </td><td class="SL_td" width="8%" align="center"><div id="SL_TTS_voice" title="undefined" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/ttsvoice.png&quot;);"></div></td><td class="SL_td" width="8%" align="center"><div id="SL_copy" title="번역 복사" class="SL_copy" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/copy.png&quot;);"></div></td><td class="SL_td" width="8%" align="center"><div id="SL_bbl_font_patch"></div><div id="SL_bbl_font" title="폰트 크기" class="SL_bbl_font" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/font.png&quot;);"></div></td><td class="SL_td" width="8%" align="center"><div id="SL_bbl_help" title="도와주세요" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/bhelp.png&quot;);"></div></td><td class="SL_td" width="15%" align="right"><div id="SL_pin" class="SL_pin_off" title="팝업 창 고정" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/pin-on.png&quot;);"></div></td></tr></table></div></div><div id="SL_shadow_translation_result" style="visibility: visible;"></div><div id="SL_loading" class="SL_loading" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/loading.gif&quot;);"></div><div id="SL_player2"></div><div id="SL_alert100">음성 기능은 200자로 제한됨</div><div id="SL_Balloon_options" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/bg3.png&quot;) rgb(255, 255, 255);"><div id="SL_arrow_down" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/down.png&quot;);"></div><table id="SL_tbl_opt" width="100%"><tr><td width="5%" align="center"><input id="SL_BBL_locer" type="checkbox" checked="1" title="번역가 버튼 표시 3 초"></td><td width="5%" align="left"><div id="SL_BBL_IMG" title="번역가 버튼 표시 3 초" style="background: url(&quot;chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/img/util/bbl-logo.png&quot;);"></div></td><td width="70%" align="center"><a href="chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/html/options/options.html?bbl" target="_blank" class="SL_options" title="옵션 보기">옵션</a> : <a href="chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/html/options/options.html?hist" target="_blank" class="SL_options" title="번역 이력">역사</a> : <a href="chrome-extension://noaijdpnepcgjemiklgfkcfbkokogabh/content/html/options/options.html?feed" target="_blank" class="SL_options" title="피드백">피드백</a> : <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=GD9D8CPW8HFA2" target="_blank" class="SL_options" title="작은 기여하기">Donate</a></td><td width="15%" align="right"><span id="SL_Balloon_Close" title="닫기">닫기</span></td></tr></table></div></div></div></body></html>

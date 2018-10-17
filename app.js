@@ -63,7 +63,7 @@ app.use(session({
  */
 app.use(passport.initialize());
 app.use(passport.session()); 
-app.use(flash());//플래시 메시지 관련
+app.use(flash());//플래시 메시지 관련a
 
 app.use(function(req, res, next) {
     app.locals.isLogin = req.isAuthenticated();
@@ -81,13 +81,15 @@ app.use(function(req, res, next){
 
 
 // 라우터 경로 설정
+var index = require('./routes/index'); // 장바구니
+
 var goods_list = require('./routes/goods_list'); // 상품 리스트
 var account = require('./routes/account'); // 로그인
 var goods_cart = require('./routes/goods_cart'); // 장바구니
 
 
 // 라우터 설정 
-app.get('/', goods_list);
+app.get('/', index);
 app.use('/goods_list', goods_list);
 app.use('/account', account);
 app.use('/goods_cart', goods_cart);

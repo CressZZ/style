@@ -4,11 +4,80 @@
 <div class="goods__wrap">
     <ul class="goods__list">
     <% goods.forEach(function(good, i){ %>
-        <li class=".col-xl-3 col-lg-4 col-md-6 col-sm-6">
+        <li class=".col-xl-3 col-lg-4 col-md-6 col-sm-6 col-6">
         <%- include('./proc/good', {good}) %>
         </li>
     <% }) %>
     </ul>
 </div>
+
+
+<script>
+
+    
+    $(function(){
+        var good = new Good('.goods__item')
+    })
+
+    class Good  {
+        constructor(cateItemSelector) {  
+            // 고정 - 노드들
+            this.goodNode = $(cateItemSelector).parents('li') //  상품 노드
+            this.optionIdNode = this.goodNode.find('.option_id') //  옵션 선택 노드
+            this.btnAddCartNode = this.goodNode.find('.btn--addCart') // 장바구니 추가 노드
+
+            this.init();
+            
+        }
+
+        /**
+        * 초기 이벤트 바인딩
+        */
+        init(){
+            // 옵션 변경 이벤트 바인딩
+            console.log(this.optionIdNode)
+            this.optionIdNode.on('change', function(e){
+                this.btnAddCartNode.data().itemid = e.currentTarget.value;
+            }.bind(this))
+
+
+            // 장바구니 담기 이벤트 바인딩
+            this.btnAddCartNode.on('click', function(e){
+                <% if(!isLogin){ %>
+                    alert('로그인이 필요합니다')
+                    location.href=`/account/login?return_url='${window.location.href}'`
+                    return false
+                <% } %>
+
+                // 장바구니에 담기
+                this.insertToCart();
+
+            }.bind(this))
+        }
+        
+        /**
+        * 헤당 상품의 option id 불러오기
+        */
+        get optionId(){
+            return this.goodNode.find('.btn--addCart').data().itemid || '0';
+        }
+
+        /**
+        * 장바구니 담기 
+        */
+        insertToCart(){
+            $.ajax({
+                url: '/goods_cart',
+                type: 'POST',
+                data: { itemid: this.optionId },
+            })
+            .done(((res)=>{
+                alert(res.msg)
+            }))
+        }
+
+    }
+
+</script>
 
 <%- include(FOOTER) %>
