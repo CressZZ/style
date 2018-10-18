@@ -5,6 +5,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser')
 var mongoose = require('mongoose')
+var DB = require('./db')
 
 //passport 로그인 관련
 var flash = require('connect-flash');
@@ -32,7 +33,8 @@ app.use('/assets', express.static(__dirname + '/assets'));
 mongoose.Promise = global.Promise;
 
 // CONNECT TO MONGODB SERVER
-mongoose.connect('mongodb://54.180.92.204:27017/style', { useNewUrlParser: true })
+
+mongoose.connect(DB, { useNewUrlParser: true })
   .then(() => console.log('Successfully connected to mongodb'))
   .catch(e => console.error(e));
 
