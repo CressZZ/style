@@ -16,13 +16,15 @@
 
     
     $(function(){
-        var good = new Good('.goods__item')
+        document.querySelectorAll('.goods__item').forEach((e)=>{
+            new Good(e);
+        })
     })
 
     class Good  {
         constructor(cateItemSelector) {  
             // 고정 - 노드들
-            this.goodNode = $(cateItemSelector).parents('li') //  상품 노드
+            this.goodNode = $(cateItemSelector)//  상품 노드
             this.optionIdNode = this.goodNode.find('.option_id') //  옵션 선택 노드
             this.btnAddCartNode = this.goodNode.find('.btn--addCart') // 장바구니 추가 노드
 
@@ -59,7 +61,7 @@
         * 헤당 상품의 option id 불러오기
         */
         get optionId(){
-            return this.goodNode.find('.btn--addCart').data().itemid || '0';
+            return this.goodNode.find('.btn--addCart').data().itemid || '';
         }
 
         /**

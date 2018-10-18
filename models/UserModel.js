@@ -21,7 +21,7 @@ var UsersSchema = new mongoose.Schema({
         type : String,
         required: [true, '유저이름은 필수 입니다.']
     },
-    cartlist: [{id: String, count: Number, item:{ type: mongoose.Schema.Types.ObjectId, ref: 'Good' } }],
+    cartlist: [{id: String, count: Number, item: [mongoose.Schema.Types.Mixed ]}],
     shipping: {
         method: String,
         price: Number,

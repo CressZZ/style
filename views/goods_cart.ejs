@@ -10,9 +10,9 @@
             장바구니
         </div>
         <ul class="cart__list">
-            <% goods.forEach(function(good, i){ %>
+            <% cartlist.forEach(function(cartitem, i){ %>
             <li class="cart__item">
-                <%- include('./proc/good_cart', {good}) %>
+                <%- include('./proc/good_cart', {cartitem}) %>
             </li>
             <% }) %>
         </ul>
@@ -90,9 +90,15 @@
         * 아이탬 삭제
         */
         onDeleteCartItem(targetCartItem){
+            
+            // 앙탬 수량을 0으로 만들고
+            targetCartItem.onDelete();
+            // this.requestUpdateCartItem(targetCartItem)
+
             // 아이탬을 삭제 하고
             this.cartItems = this.cartItems.filter((cartItem)=> cartItem.id != targetCartItem.id)
             targetCartItem.cateItemNode.animate({left: "+=100vw",},500, function(){ targetCartItem.cateItemNode.remove(); });
+
 
             // 가격 책정다시
             this.onChangeCartItem(targetCartItem)
@@ -128,7 +134,7 @@
                 data: {itemid:targetItem.id, count:targetItem.currentCount} // 수량 변경
             })
             .done(function(res){
-                alert(res.msg)
+                console.log(res.msg)
             })  
         }
 
@@ -242,34 +248,34 @@
             // 개별 배송비
             var _tempCountB = 0;
             let noBundles = this.cannotBundleItemsShippingPriceInfo
-            this.noBundleTotalNode.eq(_tempCountB).find('.price__content').remove()
+            this.noBundleTotalNode.find('.price__content').remove()
             for(var keys in noBundles){
-                this.noBundleTotalNode.eq(_tempCountB).append( `
+                this.noBundleTotalNode.append( `
                     <div class="price__content">
                         <p></p><span class="bundleTotal__title"></span><span class="bundleTotal__count"></span><span class="bundleTotal__price"></span><p></p>
                     </div> `
                 )
           
-                this.noBundleTotalNode.eq(_tempCountB).find('.bundleTotal__title').html(`${keys}: `)
-                this.noBundleTotalNode.eq(_tempCountB).find('.bundleTotal__count').html(`[${noBundles[keys].count}개 상품]`)
-                this.noBundleTotalNode.eq(_tempCountB).find('.bundleTotal__price').html(`${comma(noBundles[keys].shippingPrice)}원`)
+                this.noBundleTotalNode.find('.price__content').eq(_tempCountB).find('.bundleTotal__title').html(`${keys}: `)
+                this.noBundleTotalNode.find('.price__content').eq(_tempCountB).find('.bundleTotal__count').html(`[${noBundles[keys].count}개 상품]`)
+                this.noBundleTotalNode.find('.price__content').eq(_tempCountB).find('.bundleTotal__price').html(`${comma(noBundles[keys].shippingPrice)}원`)
                 _tempCountB++
             }
 
             // 묶음 배송비
             var _tempCount = 0;
             let bundles = this.bundleItemsShippingPriceInfo
-            this.bundleTotalNode.eq(_tempCount).find('.price__content').remove()
+            this.bundleTotalNode.find('.price__content').remove()
             for(var keys in bundles){
-                this.bundleTotalNode.eq(_tempCount).append( `
+                this.bundleTotalNode.append( `
                     <div class="price__content">
                         <p></p><span class="bundleTotal__title"></span><span class="bundleTotal__count"></span><span class="bundleTotal__price"></span><p></p>
                     </div> `
                 )
           
-                this.bundleTotalNode.eq(_tempCount).find('.bundleTotal__title').html(`${keys}: `)
-                this.bundleTotalNode.eq(_tempCount).find('.bundleTotal__count').html(`[${bundles[keys].count}개 상품]`)
-                this.bundleTotalNode.eq(_tempCount).find('.bundleTotal__price').html(`${comma(bundles[keys].shippingPrice)}원`)
+                this.bundleTotalNode.find('.price__content').eq(_tempCount).find('.bundleTotal__title').html(`${keys}: `)
+                this.bundleTotalNode.find('.price__content').eq(_tempCount).find('.bundleTotal__count').html(`[${bundles[keys].count}개 상품]`)
+                this.bundleTotalNode.find('.price__content').eq(_tempCount).find('.bundleTotal__price').html(`${comma(bundles[keys].shippingPrice)}원`)
                 _tempCount++
             }
             
@@ -329,7 +335,7 @@
             // 가변
             this.currentCount = Number(this.countNode.val()) // 현재 카운트
             this.stock = Number(this.countNode.data().stock); // -> ajax로 변경해야 함
-            this.totalPrice = this.currentCount * this.eachPrice
+            // this.totalPrice = this.currentCount * this.eachPrice
         }
         
         /**
@@ -359,15 +365,22 @@
             }
         }
 
+        onDelete(){
+            this.changeCount(0); 
+        };
+
+        get totalPrice(){
+            return  this.currentCount * this.eachPrice
+        }
         /**
         * 수량변경
         */
         changeCount(targetCount){
-            // Node부분 변경
-            this.totalPrice= targetCount * this.eachPrice // 총 금액 객체 변경
-            this.currentCount = targetCount; // 수량 객체 값 변경
-            
             // 객체 내용 변경
+            this.currentCount = targetCount; // 수량 객체 값 변경
+            // this.totalPrice= targetCount * this.eachPrice // 총 금액 객체 변경
+            
+            // Node부분 변경
             this.countNode.val(targetCount); // 수량 input 필드 변경
             this.totalPriceNode.html(`총 ${comma(this.totalPrice)} 원`); // 총 금액 변경
 

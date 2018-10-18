@@ -1,35 +1,35 @@
 
 
-<div class="cart__item__wrap card <%= (good.options[0].stock == 0) && 'sold_out' || '' %>" data-id = "<%= good.options[0].id %>"> 
+<div class="cart__item__wrap card <%= (cartitem.item[0].options[0].stock == 0) && 'sold_out' || '' %>" data-id = "<%= cartitem.id %>"> 
     <div class="cart__item__deleteBtn btn btn-secondary">삭제하기</div>
     <div class="card-body cart__item__content">
         <div class="cart__section">
             <div class="cart__img__wrap">
-                <img class="card-img-top" src="/assets/cat_1.jpg" alt="<%= good.name%>">
+                <img class="card-img-top" src="/assets/cat_1.jpg" alt="<%= cartitem.item[0].name%>">
             </div>
         </div>
         <div class="cart__section">
-            <h5 class="cart__item__name"><%= good.name%></h5>
+            <h5 class="cart__item__name"><%= cartitem.item[0].name%></h5>
             <div class="cart__item__options">
-                <span class="cart__item__option">색상: <%= good.options[0].color || ''%></span>, <span class="cart__item__option">사이즈: <%= good.options[0].size || ''%></span>
+                <span class="cart__item__option">색상: <%= cartitem.item[0].options[0].color || ''%></span>, <span class="cart__item__option">사이즈: <%= cartitem.item[0].options[0].size || ''%></span>
             </div>
             
             <div class="cart__item__prices">
                 <div class="cart__item__shipping">
-                    <span class="shipping--provider" data-provider = "<%= good.provider %>"><%=  good.provider %> </span>
+                    <span class="shipping--provider" data-provider = "<%= cartitem.item[0].provider %>"><%=  cartitem.item[0].provider %> </span>
 
-                    <span class="shipping--method" data-method = "<%= good.shipping.method %>"><%=  good.shipping.method == 'free' && '무료배송, ' || '' %> </span>
-                    <span class="shipping--canBundle" data-canbundle = "<%= good.shipping.canBundle %>"><%=  good.shipping.canBundle == true && '묶음배송' || '개별배송' %>, </span>
-                    <span class="shipping--price" data-price = "<%= good.shipping.price %>">배송비: <%=  good.shipping.price_string %> 원 </span>
+                    <span class="shipping--method" data-method = "<%= cartitem.item[0].shipping.method %>"><%=  cartitem.item[0].shipping.method == 'free' && '무료배송, ' || '' %> </span>
+                    <span class="shipping--canBundle" data-canbundle = "<%= cartitem.item[0].shipping.canBundle %>"><%=  cartitem.item[0].shipping.canBundle == true && '묶음배송' || '개별배송' %>, </span>
+                    <span class="shipping--price" data-price = "<%= cartitem.item[0].shipping.price %>">배송비: <%=  cartitem.item[0].shipping.price_string %> 원 </span>
                 </div>
-                <p class="cart__item__price--each" data-eachprice = "<%= good.price %>"><%=  good.price_string %> 원 / 개당</p>
-                <p class="cart__item__price--total"><span>총</span> <%=  good.price_string %> <span>원</span></p>
+                <p class="cart__item__price--each" data-eachprice = "<%= cartitem.item[0].price %>"><%=  cartitem.item[0].price_string %> 원 / 개당</p>
+                <p class="cart__item__price--total"><span>총</span> <%=  (cartitem.item[0].price * cartitem.count) %> <span>원</span></p>
             </div>
             <div class="count__wrap">
                 <div class="btn btn-dark count__btn count__btn--minus" data-count = '-1' >
                     <span>-</span>
                 </div>
-                <input  class="count form-control" name="count[]" type="text"  data-price = "<%= good.price %>" data-stock="<%= good.options[0].stock %>" id="" value="<%= (good.options[0].stock == 0) && '0' || good.count %>" readonly required>
+                <input  class="count form-control" name="count[]" type="text"  data-price = "<%= cartitem.item[0].price %>" data-stock="<%= cartitem.item[0].options[0].stock %>" id="" value="<%= (cartitem.item[0].options[0].stock == 0) && '0' || cartitem.count %>" readonly required>
                 <div class="btn btn-dark count__btn count__btn--plus" data-count = '1' >
                     <span>+</span>
                 </div>
