@@ -55,6 +55,7 @@ p{margin:0}
 .goods__item .item__options__wrap{margin-bottom: 5px}
 
 /* login */
+.login__wrap{font-size:2rem}
 .login__wrap form {display: flex; flex-flow: column; align-items: center}
 
 /* 장바구니 아이탬*/
@@ -67,10 +68,12 @@ opacity: 0.5;}
 .cart__item__content{display: flex;}
 .cart__section{overflow: hidden;}
 .cart__section:nth-child(1){flex:1; border:1px solid #d9d9d9;}
-.cart__section:nth-child(2){flex:2; display: flex; flex-flow: column; align-items: flex-end;  position: relative;font-size:1.4rem; margin-left: 5px}
-.cart__item__name{    font-size: 2rem; overflow: hidden; white-space: nowrap; text-align: left; text-overflow: ellipsis; max-width: 100%; }
+.cart__section:nth-child(2){flex:2; display: flex; flex-flow: column; align-items: flex-end;  position: relative;font-size:1rem; margin-left: 5px}
+.cart__item__name{ font-size: 2rem; overflow: hidden; white-space: nowrap; text-align: left; text-overflow: ellipsis; max-width: 100%; }
+.cart__item__options{ font-size: 1.5rem; }
+
 .cart__item__prices{margin-top:5px; text-align: right}
-.cart__item__price--each{margin-bottom: 5px; font-size:1rem}
+.cart__item__price--each{margin-bottom: 5px;font-size: 1.2rem}
 .cart__item__price--total{font-weight: bold; font-size:1.4rem}
 .count__wrap {display: flex; position: absolute; bottom:0}
 .count{width: 50px; text-align: center; border-radius: 0; border:1px solid black;padding: 0}
