@@ -5,39 +5,15 @@ var UserModel = require('../models/UserModel')
 var common = require('../libs/common');
 
 
-
 router.get('/', async function(req, res){
     res.locals.navibarActive = 'goods_cart';
 
-    // data
-    // var goods = await GoodsModel.find({'options': {$elemMatch: {'id':[1001]}} }).lean()
     if( !req.isAuthenticated() ){
         res.locals.navibarActive = 'login';
-        // req.flash('notify', ' 장바구니는 로그인 하신 후에 이용 가능 합니다.')
         res.redirect(`/account/login?message=장바구니는 로그인 하신 후에 이용 가능 합니다.`)
         return false
     }
 
-    // var users = await UserModel.find({username:req.user.username }).populate({
-    //     path: 'cartlist.item', 
-    //     select:{name:1,price:1,provider:1,shipping:1, options:{$elemMatch:{id:{'$in':req.user.cartlist.map((e)=>Number(e.id))}}}}
-    // }).lean()
-
-    // var test = []
-    // var test1;
-    // req.user.cartlist.forEach(async function(e, i){
-    //     if(i == 0){
-
-    //         test1 = await GoodsModel.find({'options.id':1001},{name:1,price:1,provider:1,shipping:1, options:{$elemMatch:{id:1001}}}).lean()
-    //     }
-    // })
-
-    // let cartlist =  users[0].cartlist
-    // cartlist = cartlist.map((e)=>{
-    //     e.item.price_string = common.comma(e.item.price);
-    //     e.item.shipping.price_string = common.comma(e.item.shipping.price);
-    //     return e
-    // })
     let cartlist = await UserModel.find({username:req.user.username},{cartlist:1}).lean()
     cartlist = cartlist[0].cartlist
     cartlist = cartlist.map((e)=>{
@@ -52,8 +28,6 @@ router.get('/', async function(req, res){
 router.post('/', async function(req, res, next){
 
     let itemid = req.body.itemid
-
-
     if(itemid){
         // 이미 장바구니에 있으면 
         var isAleadyExist = await UserModel.find({ username: req.user.username, "cartlist.id": itemid } )
@@ -69,7 +43,6 @@ router.post('/', async function(req, res, next){
             res.json({status:'fail', msg:`${err}`});
             return;
         }
-
         res.json({status:'sucess', msg:'장바구니에 추가 되었습니다.'});
     }else{
         res.json({status:'fail', msg:'옵션을 선택해 주세요'});
@@ -80,8 +53,6 @@ router.post('/update', async function(req, res, next){
 
     let itemid = req.body.itemid
     let count = req.body.count
-
-
 
     if(itemid){
         if(count==0){
@@ -96,8 +67,7 @@ router.post('/update', async function(req, res, next){
                 res.json({status:'fail', msg:`${err}`});
                 return;
             }
-    
-            res.json({status:'sucess', msg:'장바구니에 추가 되었습니다.'});
+            res.json({status:'sucess', msg:'장바구니에 추가 되었습니다.'}); 
         }
     }else{
         res.json({status:'fail', msg:'옵션을 선택해 주세요'});

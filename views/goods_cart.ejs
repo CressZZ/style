@@ -5,7 +5,7 @@
 
 
 <div class="cart__wrap">
-    <form action="/order" method="post" name="order_item">
+    <!-- <form action="/order" method="post" name="order_item"> -->
         <div class="cart__header">
             장바구니
         </div>
@@ -46,9 +46,11 @@
             
         </div>
         <div class="cart__order">
-            <input type="submit" class="btn btn-lg btn-dark btn-block col-6" value="주문하기">
+            <div class="btn__cart__order btn btn-lg btn-dark btn-block col-6" >주문하기</div>
+            <!-- <input type="submit" class="btn btn-lg btn-dark btn-block col-6" value="주문하기"> -->
+
         </div>
-    </form>
+    <!-- </form> -->
 
 </div>
 
@@ -56,10 +58,18 @@
 <script>
 
     $(function(){
-        
+        // 장바구니 객체 생성
         var cart = new Cart('.cart__item__wrap') // cartItem querySelector
+        
+        // 주문 버튼 눌렀을때 이벤트(주문페이지 없음)
+        $('.btn__cart__order').on('click',function(){
+            alert('현재 주문페이지가 없습니다.')
+        })
     })
 
+    /**
+     * 장바구니 Class
+     */
     class Cart{
         constructor(cartItemSelector){
             this.cartItems = [];
@@ -312,7 +322,9 @@
         }
     }
 
-
+    /**
+     * 장바구니 개별 아이탬 Class
+     */
     class CartItem  {
         constructor(cateItemSelector) {  
             // 고정 - 노드들
