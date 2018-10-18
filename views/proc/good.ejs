@@ -7,6 +7,10 @@
                 <h5 class="card-title item__name"><%= good.name %></h5>
                 <p class="card-text item__desc"><strong>생산자: </strong><%= good.provider %></p>
                 <p class="card-text item__desc"><strong>가격: </strong><%= good.price_string %> 원</p>
+                <p class="card-text item__desc"><strong>배송비: </strong><%= good.shipping.price_string %> 원</p>
+                <p class="card-text item__desc"><strong>배송형태: </strong><%= good.shipping.canBundle && '묶음배송' || '개별배송' %> </p>
+
+
             </div>      
 
             <div class="item__contentSection">
