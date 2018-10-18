@@ -69,7 +69,7 @@ router.post('/join', async function(req, res){
         displayname : req.body.displayname
     });
     
-    var alreadyExistUsername = await UserModel.findOne({username : req.body.username , password : passwordHash(req.body.password)}).lean();
+    var alreadyExistUsername = await UserModel.findOne({username : req.body.username}).lean();
 
     if(alreadyExistUsername ){
         res.send('<script>alert("같은 아이디의 회원이 이미 존재 합니다. 다른 아이디를 사용하여 주세요");location.href="/account/join";</script>');
