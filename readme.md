@@ -7,6 +7,8 @@
 $ git clone https://github.com/CressZZ/style.git
 $ npm i 
 $ node app.js
+
+localhost:3000 
 ```
 
 # 기술 스택
