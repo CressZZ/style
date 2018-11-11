@@ -1,6 +1,17 @@
 # 개요
-- 리스트 페이지 / 장바구니 페이지 제작
-- 접속 url : http://54.180.92.204
+1. 리엑트로 리스트 페이지 / 장바구니 페이지 제작 (로컬환경 구동)
+2. API 서버 AWS로 구현
+3. API 접속 url : http://54.180.92.204
+
+# Github
+```
+// API
+git clone https://github.com/CressZZ/beers_api.git
+
+// Client(react)
+git clone https://github.com/CressZZ/beers_api.git
+```
+
 
 # 로컬 환경 실행 방법
 ```
